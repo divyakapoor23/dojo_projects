@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Pokemon API - Pokedex</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            for(var x = 1; x<=718; x++) { //there are 802 pokemon, only 718 images that load
+                $('.pokemon').append('<img class="'+x+'" src="http://pokeapi.co/media/img/'+x+'.png" alt="No Pokémon image available!">');
+            }   
+
+            $(document).on('click', 'img', function(res) {
+                var x = this.className;
+                $.get("https://pokeapi.co/api/v2/pokemon/"+x+"", function(res) {
+                    $('.pokename').html('<h3>'+res.name+'</h3>');
+                    $('.avatar').html('<div class="avatar"><img src="http://pokeapi.co/media/img/'+x+'.png" alt="No Pokémon image available!"></div>');
+                    $('.types').html('<p class="types">Types:  '+res.types[0].type.name+', '+res.types[1].type.name+'</p>');
+                    $('.height').html('<p class="height">Height:  '+res.height+'</p>');
+                    $('.weight').html('<p class="weight">Weight:  '+res.weight+'</p>');
+                }, "json");
+            })
+            
+        });
+    </script>
+    <style>
+        * {
+            padding: 0px;
+            margin: 0px;
+        }
+        #wrapper {
+            margin-left: auto;
+            margin-right: auto;
+            width: 1050px;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        h1 {
+            text-align: left;
+            margin: 10px;
+            position: fixed;
+        }
+        .main {
+            width: 1050px;
+            display: flex;
+        }
+        .pokemon {
+            width: 750px;
+            margin-top: 75px;
+        }
+        .pokedex {
+            width: 250px;
+            height: 500px;
+            border: red 10px solid;
+            position: fixed;
+            margin-left: 750px;
+            margin-top: 50px;
+        }
+        .pokename {
+            text-align: center;
+            padding: 10px;
+            height: 30px;
+        }
+        .avatar {
+            height: 145px;
+            padding: 15px 30px;
+            align-content: center;
+        }
+        .types {
+            height: 75px;
+            padding: 0px 10px;
+
+        }
+        .height {
+            height: 75px;
+            padding: 0px 10px;
+        }
+        .weight {
+            height: 75px;
+            padding: 0px 10px;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="wrapper">
+        <h1>Gotta Catch'em All &sung;</h1>
+        <div class="main">
+            <div class="pokemon"></div>
+            <div class="pokedex">
+                <h3 class="pokename">Pokémon</h3>
+                <div class="avatar"></div>
+                <p class="types">Types</p>
+                <p class="height">Height</p>
+                <p class="weight">Weight</p>
+                
+            </div>
+        </div>
+    </div>
+</body>
+</html>

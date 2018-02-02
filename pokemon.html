@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Pokemon API - Pokedex</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            for(var x = 1; x<=151; x++) {
+                $('.pokedex').append('<img src="http://pokeapi.co/media/img/'+x+'.png">');
+            }
+        });
+    </script>
+</head>
+<body>
+    <h1>Pokemon API - Pokedex</h1>
+    <div class="pokedex"></div>
+</body>
+</html> 
