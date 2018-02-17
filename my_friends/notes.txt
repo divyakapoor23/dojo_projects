@@ -1,0 +1,29 @@
+#ALTER TABLE friends
+#ADD created_year YEAR;
+#DROP COLUMN last_name;
+
+ALTER TABLE friends
+MODIFY friend_since DATE;
+
+SELECT * FROM friends;
+
+UPDATE friends
+SET friend_since = "2013-02-04", updated_at = NOW()
+WHERE id=6;
+
+SELECT * FROM friends;
+
+INSERT INTO friends (name, age, friend_since, fs_year,updated_at)
+VALUES ("Katie O'Shea", 25, NOW(), 1992, NOW());
+INSERT INTO friends (name, age, friend_since, fs_year,updated_at)
+VALUES ("Katie Avagliano", 24, NOW(), 2016, NOW());
+INSERT INTO friends (name, age, friend_since, fs_year,updated_at)
+VALUES ("Katie Smisson", 25, NOW(), 2005, NOW());
+INSERT INTO friends (name, age, friend_since, fs_year,updated_at)
+VALUES ("Katie Sullivan", 25, NOW(), 2010, NOW());
+INSERT INTO friends (name, age, friend_since, fs_year,updated_at)
+VALUES ("Katie Odens", 26, NOW(), 2006, NOW());
+INSERT INTO friends (name, age, friend_since, fs_year,updated_at)
+VALUES ("Katie Hogan", 23, NOW(), 2013, NOW());
+INSERT INTO friends (name, age, friend_since, fs_year,updated_at)
+VALUES ("Katie Porter", 203, NOW(), NOW(), NOW());

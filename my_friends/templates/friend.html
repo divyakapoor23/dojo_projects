@@ -1,0 +1,25 @@
+<html>
+<head>
+    <title>Friends</title>
+</head>
+<body>
+    
+<h1>{{ friend[0].name }}</h1>
+
+    <p>Age: {{ friend[0].age }}</p>
+    <p>Friend Since: {{ friend[0].friend_since.strftime("%B %d") }}, {{ friend[0].friend_since.strftime("%Y") }}</p>
+
+<hr>
+    <form action="/update_friend/{{ friend[0].id }}" method="post"> 
+        <h4>Edit Friend:</h4>
+		Name: <input type="text" name="name" placeholder="Full Name"><br>
+        Age: <input type="text" name="age" placeholder="Age"><br>
+		<input type="submit" value="Save Changes">
+    </form>
+<hr>
+    <a href="/remove_friend/{{ friend[0].id }}"><button type="button">Delete Friend</button></a>
+<hr>
+    <a href="/"><button type="button">List of Friends</button></a> 
+
+</body>
+</html>
