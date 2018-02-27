@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logged In</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+    <style type="text/css">
+        .log {
+            height: 350px;
+            overflow: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <a href="/books" class="col-md-11 text-right">Home</a>
+            <a href="/logout" class="col-md-1 text-right">Log Out</a>
+        </div>
+        <hr>
+        <h4>{{book.title}}</h4>
+        <p>Author: {{book.author.name}}</p>
+        <p>Overall Rating: 
+            {% if overall == 1 %}  
+                <span>&#9733; &#9734; &#9734; &#9734; &#9734;</span>
+            {% elif overall == 2 %} 
+                <span>&#9733; &#9733; &#9734; &#9734; &#9734;</span>
+            {% elif overall == 3 %}
+                <span>&#9733; &#9733; &#9733; &#9734; &#9734;</span>
+            {% elif overall == 4 %}
+                <span>&#9733; &#9733; &#9733; &#9733; &#9734;</span>
+            {% elif overall == 5 %} 
+                <span>&#9733; &#9733; &#9733; &#9733; &#9733;</span>
+            {% endif %} 
+        </p>
+        <hr>
+        <div class="row">
+            <div class="col-md-8">
+                <h4>Reviews:</h4>
+                <div class="log">
+                {% for review in reviews %}
+                    <hr>
+                    <p>Rating: 
+                        {% if review.rating is 1 %}  
+                            <span>&#9733; &#9734; &#9734; &#9734; &#9734;</span>
+                        {% elif review.rating == 2 %} 
+                            <span>&#9733; &#9733; &#9734; &#9734; &#9734;</span>
+                        {% elif review.rating == 3 %}
+                            <span>&#9733; &#9733; &#9733; &#9734; &#9734;</span>
+                        {% elif review.rating == 4 %}
+                            <span>&#9733; &#9733; &#9733; &#9733; &#9734;</span>
+                        {% elif review.rating == 5 %} 
+                            <span>&#9733; &#9733; &#9733; &#9733; &#9733;</span>
+                        {% endif %}
+                    </p>
+                    <p><a href="/users/{{review.reviewer.id}}">{{review.reviewer.first_name}}</a> says: {{review.comment}}</p>
+                    <p>Posted on {{review.created_at|date:"F d, Y"}}</p>
+                {% endfor %}
+                </div>
+            </div>
+            <div class="col-md-4">
+                <h5>Add a Review: </h5>
+                <form action="/review/{{book.id}}" method="post">
+                    {% csrf_token%}
+                    <input type="textarea" name="review">
+                    <div>Rating:  
+                        <select name="rating">
+                            <option value="1">&#9733; &#9734; &#9734; &#9734; &#9734;</option>
+                            <option value="2">&#9733; &#9733; &#9734; &#9734; &#9734;</option>
+                            <option value="3">&#9733; &#9733; &#9733; &#9734; &#9734;</option>
+                            <option value="4">&#9733; &#9733; &#9733; &#9733; &#9734;</option>
+                            <option value="5">&#9733; &#9733; &#9733; &#9733; &#9733;</option>
+                        </select> 
+                    </div>           
+                    <input type="submit">
+                </form>
+                {% if messages %}
+                    <ul class="messages">
+                        {% for message in messages %}
+                            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+    
+            </div>
+        </div>
+    </div>
+</body>
+</html>

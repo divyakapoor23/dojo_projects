@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Books Home</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+    <style type="text/css">
+        .log {
+            height: 200px;
+            overflow: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <h3 class="col-md-8">Welcome, <a href="/users/{{user.id}}">{{ user.first_name }}</a>!</h1>
+            <a href="/books/add" class="col-md-3 text-right">Add Book and Review</a>
+            <a href="/logout" class="col-md-1 text=right">Log Out</a>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-md-7">
+                <h4><strong>Recent Book Reviews</strong></h4>
+                <div>
+                    {% for recent_rev in reviews %}
+                        <hr>
+                        <h6><a href="/books/{{recent_rev.book.id}}">{{recent_rev.book.title}}</a></h6>
+                        <p>Rating: 
+                            {% if recent_rev.rating is 1 %}  
+                                <span>&#9733; &#9734; &#9734; &#9734; &#9734;</span>
+                            {% elif recent_rev.rating == 2 %} 
+                                <span>&#9733; &#9733; &#9734; &#9734; &#9734;</span>
+                            {% elif recent_rev.rating == 3 %}
+                                <span>&#9733; &#9733; &#9733; &#9734; &#9734;</span>
+                            {% elif recent_rev.rating == 4 %}
+                                <span>&#9733; &#9733; &#9733; &#9733; &#9734;</span>
+                            {% elif recent_rev.rating == 5 %} 
+                                <span>&#9733; &#9733; &#9733; &#9733; &#9733;</span>
+                            {% endif %}
+                        </p>
+                        <p><a href="/users/{{recent_rev.reviewer.id}}">{{recent_rev.reviewer.first_name}}</a> says: {{recent_rev.comment}}</p>
+                        <p>Posted on {{ recent_rev.created_at|date:"F d, Y" }}</p>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="col-md-5">
+                <h4><strong>Other Books with Reviews:</strong></h4>
+                <div class="log">
+                    {% for book in books %}
+                        <p><a href="/books/{{book.id}}">{{book.title}}</a></p>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
