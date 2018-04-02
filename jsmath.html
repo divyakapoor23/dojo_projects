@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>JS MAth</title>
+</head>
+<body>
+    <ol id="math"></ol>
+    <script>
+        //Math 1
+        function zero_negativity(arr) {
+            for(var x=0; x<arr.length; x++) {
+                if(arr[x] < 0) {
+                    return false;
+                }
+            }
+            return true;
+        }
+        let math = zero_negativity([4,5,6,7,2,-2])
+        let math2 = zero_negativity([4,5,6,7,2])
+        let how = document.createElement("li");
+        how.innerHTML = math;
+        document.getElementById("math").appendChild(how);
+        how = document.createElement("li");
+        how.innerHTML = math2;
+        document.getElementById("math").appendChild(how);
+
+        //Math 2
+        function is_even(num) {
+            if(num%2 == 0) {
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
+        math = is_even(5)
+        console.log(math);     
+        math2 = is_even(4)
+        how = document.createElement("li");
+        how.innerHTML = math;
+        document.getElementById("math").appendChild(how);
+        how = document.createElement("li");
+        how.innerHTML = math2;
+        document.getElementById("math").appendChild(how);
+
+        //Math 3
+        function how_many_even(arr) {
+            count = 0;
+            for(var x=0; x<arr.length; x++) {
+                if(is_even(arr[x])) {
+                    count++;
+                }
+            }
+            return count;
+        }
+        math = how_many_even([2,3,4,6,87,9,6,4,22,3,3,4,566]);
+        how = document.createElement("li");
+        how.innerHTML = math;
+        document.getElementById("math").appendChild(how);
+        //Math 4
+        function create_dummy_array(n) {
+            let arr = [];
+            while(arr.length < n) {
+                rando = Math.floor(Math.random() * 10);
+                arr.push(rando);
+            }
+            return arr;
+        }
+        math = create_dummy_array(7);
+        how = document.createElement("li");
+        how.innerHTML = math;
+        document.getElementById("math").appendChild(how);
+
+        //Math 5
+        function random_choice(arr) {
+            rando = Math.floor(Math.random() * arr.length);
+            return arr[rando];
+        }
+        math = random_choice([2,3,4,6,87,9,6,4,22,3,3,4,566]);
+        how = document.createElement("li");
+        how.innerHTML = math;
+        document.getElementById("math").appendChild(how);
+
+    </script>
+</body>
+</html>
