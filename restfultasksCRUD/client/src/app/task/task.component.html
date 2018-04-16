@@ -1,0 +1,44 @@
+<h1 class="jumbotron">Restful Tasks API</h1>
+<div class="new">
+  <h2>New Task</h2>
+  <br>
+  <form (submit)="create()" class="form-group"> 
+    <p><input type="text" [(ngModel)]="newtask.title" name="title" placeholder="Title"></p>
+    <p><input type="text" [(ngModel)]="newtask.description" name="description" placeholder="Description"></p>
+    <input type="submit" value="Create Task" class="btn btn-xs btn-primary">
+  </form>
+</div>
+<br><br>
+<div class="row">
+  <div class="col-md-6">
+    <h2>Task List</h2>
+    <button (click)="all($event)" class="btn btn-xs btn-primary">Click to get all tasks</button>
+    <div *ngFor="let task of alltasks">
+      <div class="row">
+        <div class="col-md-8" style= "border: 1px solid black; width: 360px; height: 150px; margin: 10px; padding: 10px;">
+          <div class="btn-group">
+            <button (click)="show(task._id)" value="{{ task._id }}" class="btn btn-xs btn-primary">Details</button>
+            <button (click)="editform(task._id)" value="{{ task._id }}" class="btn btn-xs btn-basic">Edit</button>
+            <button (click)="delete(task._id)" value="{{ task._id }}" class="btn btn-xs btn-danger">Delete</button>
+          </div>
+          <p>Title: {{ task.title }}</p>
+          <div *ngIf="showtask != null">
+            <p *ngIf="showtask._id == task._id">&emsp;{{ showtask.description }},
+              <span *ngIf="showtask.completed == true"> complete</span>
+              <span *ngIf="showtask.completed == false"> incomplete</span>
+            </p> 
+          </div>   
+        </div> 
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6" *ngIf="edittask != null">
+    <h2>Edit a task</h2>  
+    <form (submit)="edit($event)" class="form form-group">
+        <p><input type="text" [(ngModel)]="edittask.title" name="title" value="{{edittask.title}}"></p>
+        <p><input type="text" [(ngModel)]="edittask.description" name="description" value="{{edittask.description}}"></p>
+      <p>Completed? <input type="checkbox" [(ngModel)]="edittask.completed" name="completed" value="edittask.completed"></p>        
+      <input type="submit" value="Edit task" class="btn btn-xs btn-primary">
+    </form>
+  </div>
+</div>
