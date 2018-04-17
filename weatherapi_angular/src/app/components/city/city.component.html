@@ -1,0 +1,16 @@
+<div  class="city" *ngIf="city">
+  <div class="left">
+    <h1>
+      {{ city.name }}, {{ city.sys.country}}
+    </h1>
+    <ul>
+      <li>Humidity: {{ city.main.humidity }}%</li>
+      <li>Average Temperature: {{ city.main.temp }}°</li>  
+      <li>High: {{ city.main.temp_min }}°</li>
+      <li>Low: {{ city.main.temp_max }}°</li>
+      <li>Clouds: {{ city.clouds.all }}%</li>  
+      <li>Wind Speed: {{ city.wind.speed }} mph</li>
+    </ul>
+  </div>
+  <img src="{{img}}" alt="{{city.name}}">
+</div>
