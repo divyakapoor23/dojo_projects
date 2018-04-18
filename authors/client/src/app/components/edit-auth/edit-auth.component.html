@@ -1,0 +1,17 @@
+<div *ngIf="editAuth">
+    <a href="/">Home</a>
+    <h2>Edit this author: </h2>
+    <form (submit)="edit()" name="myForm"> 
+      <p>Name: 
+        <span class="err" *ngIf="errors">
+            {{errors.errors.name.message}}          
+        </span>
+        <span class="success" *ngIf="success">
+            {{success}}
+        </span>
+      </p>
+      <input type="text" required name [(ngModel)]="editAuth.name" name="name" value="{{editAuth.name}}">
+      <p><a href="/" class="btn">Cancel</a>
+      <input type="submit" value="Submit" class="btn"></p>
+    </form>
+  </div>

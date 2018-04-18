@@ -1,0 +1,17 @@
+<div *ngIf="newAuth">
+  <a href="/">Home</a>
+  <h2>Add a new author: </h2>
+  <form (submit)="create()" class="form-group"> 
+    <p>Name: 
+      <span class="err" *ngIf="errors">
+          {{errors.errors.name.message}}
+      </span>
+      <span class="success" *ngIf="success">
+          {{success}}
+      </span>
+    </p>
+    <input type="text" [(ngModel)]="newAuth.name" name="name" placeholder="ex. George R.R. Martin">
+    <p><a href="/" class="btn">Cancel</a>
+    <input type="submit" value="Submit" class="btn"></p>
+  </form>
+</div>
