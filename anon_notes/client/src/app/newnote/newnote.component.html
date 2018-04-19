@@ -1,0 +1,7 @@
+<div class="wrapper">
+  <form (submit)="create()">
+    Note: <input type="text" name="content" [(ngModel)]="newnote.content" required minlength="3" maxlength="255" #content="ngModel">
+    <input type="submit" value="Add Note" class="btn">
+  </form>
+  <p class="err" *ngIf="content.invalid && content.dirty">Your note must be at least 3 characters long!</p>
+</div>

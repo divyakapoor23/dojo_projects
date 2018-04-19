@@ -1,0 +1,28 @@
+.wrapper {
+    width: 860px;
+    height: 50px;
+    background-color: white;
+    border: 1px black solid;
+    padding: 10px;
+    margin: 20px 0px;;
+}
+.btn {
+    background:    #60cb31;
+    border-radius: 0px;
+    box-shadow:    2px 2px #000000;
+    padding:       8px 20px;
+    color:         #ffffff;
+    display:       inline-block;
+    font:          normal 700 24px/1 "Calibri", sans-serif;
+    text-align:    center;
+    text-shadow:   1px 1px #000000;
+}
+.err {
+    color: red;
+    font-size: 80%;
+}
+
+input:first-of-type {
+    width: 650px;
+    margin: 10px;
+}

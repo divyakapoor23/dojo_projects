@@ -1,0 +1,12 @@
+.wrapper {
+    padding: 20px;
+    width: 880px;
+    height: 820px;
+    background-color: lightcyan;
+    margin: 20px auto;
+    border: 1px black solid;
+}
+
+h1 {
+    margin: 20px 0px;
+}

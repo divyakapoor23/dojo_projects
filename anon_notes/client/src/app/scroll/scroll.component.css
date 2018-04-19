@@ -1,0 +1,21 @@
+.wrapper {
+    width: 860px;
+    height: 650px;
+    background-color: white;
+    border: 1px black solid;
+    padding: 10px;
+    margin: 20px 0px;
+    overflow: auto;    
+}
+.notes {
+    width: 780px;
+    height: 80px;
+    border: 1px black solid;
+    margin: 10px;
+    padding: 10px;
+    font-size: 20px;
+}
+.date {
+    text-align: right;
+    font-size: 16px;
+}
